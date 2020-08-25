@@ -21,7 +21,6 @@ const Navigation = () => {
         to="/productos"
         activeStyle={activeStyle}
         isActive={(match, location) => {
-          console.log('match: ', match, 'location: ', location);
           if (!match) return false;
           return !match.isExact;
         }}
