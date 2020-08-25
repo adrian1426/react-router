@@ -3,37 +3,15 @@ import { BrowserRouter, Route } from 'react-router-dom';
 import Home from './components/home';
 import Productos from './components/productos';
 import Clientes from './components/clientes';
+import Navigation from './components/navegation';
 
 function App() {
   return (
     <BrowserRouter>
-      <Route path='/' exact component={Home} />
-
-      {/*
-       el método componente utiliza internamente el React.createElement
-       por lo tanto por cada renderizado react creará un nuevo componente
-       */}
-      <Route path='/componente' component={() => (<div>Hola amigos</div>)} />
-
-      {/*
-       React recomienda utilizar render, cuando los componentes son funcionales
-       para no crearlos varios veces con component
-       */}
+      <Navigation />
+      <Route path='/' exact render={Home} />
       <Route path='/productos' render={Productos} />
-
-      {/*
-       Siempre será renderizado
-       */}
-      <Route path='/clientes'>
-        {
-          (props) => {
-            console.log(props);
-            return (
-              <Clientes />
-            )
-          }
-        }
-      </Route>
+      <Route path='/clientes' render={Clientes} />
     </BrowserRouter>
   );
 }
