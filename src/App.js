@@ -10,7 +10,7 @@ function App() {
     <BrowserRouter>
       <Navigation />
       <Route path='/' exact render={Home} />
-      <Route path='/productos' render={Productos} />
+      <Route path='/productos/:id?' render={Productos} />
       <Route path='/clientes' render={Clientes} />
     </BrowserRouter>
   );

@@ -1,5 +1,6 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
+import Styles from './navegation.module.css'
 
 const Navigation = () => {
 
@@ -8,30 +9,25 @@ const Navigation = () => {
     justifyContent: 'space-around'
   };
 
+  const activeStyle = {
+    color: 'orangered'
+  };
+
   return (
     <nav style={navStyles}>
-      {/* 
-      ancla
-      <a href=""></a>
-       */}
-
-      {/* el state llegará por props al componente renderizado */}
-
-      <Link
-        to={{
-          pathname: '/',
-          search: '?ordenar=nombre',
-          hash: '#hash-otro',
-          state: {
-            nombre: 'Adrian',
-            edad: 23
-          }
+      <NavLink to="/" exact activeStyle={activeStyle}>home</NavLink>
+      <NavLink to="/clientes" activeClassName={Styles.navActive}>clientes</NavLink>
+      <NavLink
+        to="/productos"
+        activeStyle={activeStyle}
+        isActive={(match, location) => {
+          console.log('match: ', match, 'location: ', location);
+          if (!match) return false;
+          return !match.isExact;
         }}
       >
-        home
-      </Link>
-      <Link to="/clientes">clientes</Link>
-      <Link to="/productos" replace>productos</Link>
+        productos
+      </NavLink>
     </nav>
   );
 };
