@@ -27,6 +27,7 @@ const Navigation = () => {
       >
         productos
       </NavLink>
+      <NavLink to='/ropa'>Ropa</NavLink>
     </nav>
   );
 };
